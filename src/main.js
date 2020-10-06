@@ -1,7 +1,11 @@
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import Vue                           from 'vue';
+/**
+ *
+ */
+
+//import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import { createApp }                 from 'vue';
 import VueSocketIO                   from 'vue-socket.io';
-import VueClipboard                  from 'vue-clipboard2';
+//import VueClipboard                  from 'vue-clipboard2';
 import App                           from './App.vue';
 import store                         from './store';
 
@@ -12,20 +16,32 @@ window.NoSleep = require( 'nosleep.js' );
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'animate.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+//import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-Vue.use( BootstrapVue );
-Vue.use( IconsPlugin );
-Vue.use( VueClipboard );
+//Vue.use( BootstrapVue );
+//Vue.use( IconsPlugin );
+//Vue.use( VueClipboard );
 
-Vue.use( new VueSocketIO( {
+//Vue.use( new VueSocketIO( {
+//	debug:      false,
+//	connection: 'http://' + window.location.hostname + ':3000'
+//} ) );
+
+//Vue.config.productionTip = false;
+
+//new Vue( {
+//	render: h => h( App ),
+//	store
+//} ).$mount( '#app' );
+
+const app = createApp( App );
+
+//app.use( BootstrapVue );
+//app.use( IconsPlugin );
+//app.use( VueClipboard );
+app.use( store );
+app.use( new VueSocketIO( {
 	debug:      false,
 	connection: 'http://' + window.location.hostname + ':3000'
 } ) );
-
-Vue.config.productionTip = false;
-
-new Vue( {
-	render: h => h( App ),
-	store
-} ).$mount( '#app' );
+app.mount( '#app' );

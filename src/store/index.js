@@ -7,20 +7,19 @@
  */
 
 
-import Vue       from 'vue';
-import Vuex      from 'vuex';
-import app       from './modules/_app';
-import config    from './modules/_config';
-import events    from './modules/_events';
-import menu      from './modules/_menu';
-import skins     from './modules/_skins';
-import telemetry from './modules/_telemetry';
+import { createStore } from 'vuex';
+import app             from './modules/_app';
+import config          from './modules/_config';
+import events          from './modules/_events';
+import menu            from './modules/_menu';
+import skins           from './modules/_skins';
+import telemetry       from './modules/_telemetry';
 
-Vue.use( Vuex );
+//Vue.use( Vuex );
 
 const debug = process.env.NODE_ENV !== 'production';
 
-export default new Vuex.Store( {
+export const store = createStore( {
 	modules: {
 		skins,
 		telemetry,
